@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1551621962-b8f40dee2f2c?q=80&w=1920&auto=format&fit=crop">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1734923439452-a9b965dca930?q=80&w=1920&auto=format&fit=crop">
 
 <style>
 /* ===== RESET & ROOT ===== */
@@ -255,16 +255,6 @@ body.a11y .testimonial-item { background: #fff; }
   color: rgba(250,244,239,0.32);
 }
 
-/* Butterfly SVG decor */
-.butterfly-decor {
-  position: absolute; right: clamp(2rem, 6vw, 6rem); bottom: 18%;
-  z-index: 2; opacity: 0.28; pointer-events: none;
-  animation: flutter 7s ease-in-out infinite;
-}
-@keyframes flutter {
-  0%, 100% { transform: translateY(0) rotate(-4deg) scale(1); }
-  50%       { transform: translateY(-22px) rotate(4deg) scale(1.04); }
-}
 
 /* ===== MARQUEE ===== */
 .marquee-wrap {
@@ -336,6 +326,17 @@ body.a11y .testimonial-item { background: #fff; }
   font-size: 0.93rem; line-height: 1.9; color: var(--ink);
 }
 .about-body p + p { margin-top: 1.1rem; }
+.btn-read-more {
+  display: inline-flex; align-items: center;
+  font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mauve); border: 1px solid var(--hairline);
+  padding: 0.72rem 1.5rem; margin-top: 1.6rem;
+  white-space: nowrap; flex-shrink: 0;
+  transition: border-color 0.3s, color 0.3s;
+  min-height: 44px;
+}
+.btn-read-more:hover { border-color: var(--mauve); color: var(--plum); }
 .credentials {
   display: flex; flex-wrap: wrap; gap: 0.5rem;
   margin-top: 2rem; padding-top: 1.5rem;
@@ -666,7 +667,6 @@ footer {
   .tools-grid { grid-template-columns: 1fr; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
   .hero-symbol { opacity: 0.06; height: 40vh; right: 0; }
-  .butterfly-decor { display: none; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .service-card { aspect-ratio: 3/2.5; }
@@ -724,27 +724,14 @@ footer {
     <div class="hero-bg">
       <!-- PLACEHOLDER: Replace this image with a photo of Magen — full bleed, above the fold -->
       <img
-        src="https://images.unsplash.com/photo-1551621962-b8f40dee2f2c?q=80&w=1920&auto=format&fit=crop"
+        src="https://images.unsplash.com/photo-1734923439452-a9b965dca930?q=80&w=1920&auto=format&fit=crop"
         id="heroImg"
-        alt="Sunlight breaking through a forest canopy — symbol of Magen's healing journey from darkness to light"
+        alt="Warm light with crystals and healing elements evoking Magen's energy healing practice"
         fetchpriority="high">
     </div>
 
     <!-- Brand symbol watermark -->
     <img src="MAGEN'S%20SYMBOL.png" class="hero-symbol" alt="">
-
-    <!-- Butterfly decoration -->
-    <svg class="butterfly-decor" width="110" height="76" viewBox="0 0 110 76" fill="none" aria-hidden="true">
-      <path d="M55 38 C42 8, 4 6, 1 24 C-1 38, 28 46, 55 38Z" fill="rgba(212,168,83,0.7)"/>
-      <path d="M55 38 C68 8, 106 6, 109 24 C111 38, 82 46, 55 38Z" fill="rgba(212,168,83,0.7)"/>
-      <path d="M55 38 C38 54, 8 58, 6 50 C4 42, 32 38, 55 38Z" fill="rgba(212,168,83,0.48)"/>
-      <path d="M55 38 C72 54, 102 58, 104 50 C106 42, 78 38, 55 38Z" fill="rgba(212,168,83,0.48)"/>
-      <ellipse cx="55" cy="38" rx="2.5" ry="11" fill="rgba(212,168,83,0.9)"/>
-      <path d="M53 27 C50 17, 45 10, 43 7" stroke="rgba(212,168,83,0.65)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <path d="M57 27 C60 17, 65 10, 67 7" stroke="rgba(212,168,83,0.65)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <circle cx="43" cy="7" r="2" fill="rgba(212,168,83,0.65)"/>
-      <circle cx="67" cy="7" r="2" fill="rgba(212,168,83,0.65)"/>
-    </svg>
 
     <div class="hero-content">
       <span class="eyebrow rv">Reiki Master Teacher &nbsp;·&nbsp; Sealey, Texas</span>
@@ -755,7 +742,6 @@ footer {
         <a href="#story" class="btn-ghost">My Story &nbsp;&#x2192;</a>
       </div>
     </div>
-    <p class="hero-note">&#x2B21; Photo placeholder &mdash; replace with Magen's portrait for launch</p>
   </section>
 
   <!-- MARQUEE -->
@@ -824,11 +810,9 @@ footer {
   <!-- ABOUT / MY STORY -->
   <section id="story" aria-labelledby="story-heading">
     <div class="about-photo-wrap rv">
-      <!-- PLACEHOLDER: Replace with Magen's personal photo for the About section -->
       <img
-        src="https://images.unsplash.com/photo-1604908506732-46bf709bf6b1?q=80&w=800&auto=format&fit=crop"
-        alt="Portrait placeholder for Magen Kutra, Reiki Master Teacher">
-      <div class="about-photo-note">&#x2B21; Replace with Magen's photo</div>
+        src="nd.png"
+        alt="Magen Kutra, Reiki Master Teacher and founder of Magen's Magic">
     </div>
 
     <div class="about-content">
@@ -836,20 +820,16 @@ footer {
       <h2 id="story-heading" class="rv rv-delay-1">The road to<br><em>soul-deep healing</em></h2>
 
       <div class="about-blockquote rv rv-delay-2">
-        <p>"I still don't feel better. I feel like I need to be healed soul deep."</p>
+        <p>"What I know is that transformation is possible. Because I lived it."</p>
       </div>
 
       <div class="about-body rv rv-delay-3">
-        <p>My journey into Reiki and energy healing began long before I knew what Reiki was. Since the age of 15, I struggled with depression and anxiety. Over the years, I was prescribed numerous medications and received several mental health diagnoses, including bipolar disorder and later schizophrenia. Throughout my life, I was hospitalized in several psychiatric facilities more times than I care to count.</p>
+        <p>My journey into Reiki and energy healing began long before I knew what Reiki was. Since the age of 15, I struggled with depression and anxiety. Over the years, I was prescribed numerous medications and received several mental health diagnoses, including bipolar disorder and later schizophrenia. I was hospitalized more times than I care to count, placed on disability, and eventually became almost completely bedridden — taking 14 different medications. And still, I did not feel better.</p>
 
-        <p>Despite these challenges, I earned my Certification in Chemical Dependency Counseling and my Bachelor's Degree in Behavioral Science. I dedicated my career to helping others through social work, case management, and as an Investigator for the Department of Family and Protective Services for the State of Texas. I wanted to protect children and help families, but I came to a heartbreaking realization: the system is not truly built to heal them.</p>
-
-        <p>I remember lying in bed, watching through my bedroom doorway as my children got ready and left for school. I was there, but I wasn't there. I was existing. Not living. I often told my family quietly, "I still don't feel better. I feel like I need to be healed soul deep." I never said those words to my doctors, afraid they would dismiss me with another diagnosis or prescription. So I kept that truth close to my heart.</p>
-
-        <p>In that time of darkness, I prayed. I asked for my path to be lit, for the ability to heal myself, and in turn, to help others find healing too. That prayer changed the entire trajectory of my life. That search led me to my very first Reiki session, and something shifted in me that I had never felt before. Within days of that first session, I received my Reiki I and Reiki II attunements.</p>
-
-        <p>Over time, in a turn that stunned even my own family, I was able to discontinue every medication I once believed I would need for the rest of my life. What I know is that transformation is possible. Because I lived it. I know what it feels like to lose hope. And because I have walked through that darkness myself, I am now honored to help others find their own light.</p>
+        <p>That search led me to my very first Reiki session, and something shifted in me that I had never felt before. Over time, in a turn that stunned even my own family, I was able to discontinue every medication I once believed I would need for the rest of my life.</p>
       </div>
+
+      <a href="#" class="btn-read-more rv rv-delay-3">Read My Full Story &nbsp;&#x2192;</a>
 
       <div class="credentials rv rv-delay-4">
         <span class="cred-tag">Reiki Master Teacher</span>
