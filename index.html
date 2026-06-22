@@ -217,12 +217,6 @@ body.a11y .testimonial-item { background: #fff; }
     rgba(30,16,24,0.72) 100%
   );
 }
-.hero-symbol {
-  position: absolute; right: clamp(2rem, 8vw, 9rem);
-  top: 50%; transform: translateY(-50%);
-  z-index: 1; opacity: 0.1; height: 55vh; width: auto;
-  pointer-events: none;
-}
 .hero-content {
   position: relative; z-index: 2;
   max-width: 780px; padding-top: 5rem;
@@ -666,8 +660,7 @@ footer {
   .services-grid { grid-template-columns: 1fr; }
   .tools-grid { grid-template-columns: 1fr; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
-  .hero-symbol { opacity: 0.06; height: 40vh; right: 0; }
-  .footer-inner { grid-template-columns: 1fr; }
+.footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .service-card { aspect-ratio: 3/2.5; }
 }
@@ -730,8 +723,6 @@ footer {
         fetchpriority="high">
     </div>
 
-    <!-- Brand symbol watermark -->
-    <img src="MAGEN'S%20SYMBOL.png" class="hero-symbol" alt="">
 
     <div class="hero-content">
       <span class="eyebrow rv">Reiki Master Teacher &nbsp;·&nbsp; Sealey, Texas</span>
