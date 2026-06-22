@@ -1134,7 +1134,7 @@ footer {
   img.addEventListener('load', onLoad);
   if (img.complete) onLoad();
   window.addEventListener('scroll', () => {
-    const offset = Math.min(window.scrollY * 0.04, window.innerHeight * 0.055);
+    const offset = Math.min(window.scrollY * 0.04, window.innerHeight * 0.025);
     img.style.transform = 'scale(1.06) translateY(-' + offset + 'px) translateZ(0)';
   }, { passive: true });
 })();
