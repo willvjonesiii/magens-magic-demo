@@ -345,8 +345,11 @@ body.a11y .testimonial-item { background: #fff; }
 
 /* ===== SERVICES ===== */
 #services {
-  padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(4rem, 8vw, 7rem) 0 0;
   background: var(--warm);
+}
+#services .section-header {
+  padding: 0 clamp(1.5rem, 5vw, 4rem) 3rem;
 }
 .section-header { text-align: center; margin-bottom: 3.5rem; }
 .section-header .eyebrow { color: var(--mauve); margin-bottom: 0.8rem; }
@@ -360,56 +363,68 @@ body.a11y .testimonial-item { background: #fff; }
   font-size: 0.9rem; color: rgba(45,40,40,0.65);
   line-height: 1.7; max-width: 520px; margin: 1rem auto 0;
 }
-.services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
+
+/* Diptych layout */
+.diptych {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  align-items: start;
 }
-.service-card {
-  position: relative; overflow: hidden; border-radius: 0.2rem;
-  background-size: cover; background-position: center;
-  aspect-ratio: 4/5;
+.diptych-left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--void);
 }
-.card-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top,
-    rgba(30,16,24,0.93) 0%,
-    rgba(30,16,24,0.55) 50%,
-    rgba(30,16,24,0.2) 100%);
-  transition: background 0.4s;
-}
-.service-card:hover .card-overlay {
-  background: linear-gradient(to top,
-    rgba(58,30,53,0.97) 0%,
-    rgba(107,61,94,0.72) 55%,
-    rgba(30,16,24,0.3) 100%);
-}
-.card-content {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 1.6rem 1.4rem; z-index: 1;
-  display: flex; flex-direction: column; gap: 0.4rem;
-}
-.card-num {
-  font-family: 'Jost', sans-serif; font-size: 0.6rem;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--butterfly);
-}
-.card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem; font-weight: 400; font-style: italic;
-  color: var(--cream); line-height: 1.3;
-}
-.card-price {
-  font-family: 'Jost', sans-serif; font-size: 0.78rem;
-  color: rgba(212,168,83,0.85); letter-spacing: 0.06em;
-  font-weight: 400;
-}
-.card-desc {
-  font-size: 0.8rem; color: rgba(250,244,239,0.78);
-  line-height: 1.65; max-height: 0; overflow: hidden;
-  transition: max-height 0.55s ease, opacity 0.4s;
+.diptych-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
   opacity: 0;
+  transition: opacity 0.7s ease;
 }
-.service-card:hover .card-desc { max-height: 140px; opacity: 1; }
+.diptych-img.active { opacity: 1; }
+.diptych-right {
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3.5rem);
+  display: flex; flex-direction: column;
+}
+.service-row {
+  display: flex; gap: 1.4rem;
+  padding: 1.6rem 0 1.6rem 1.4rem;
+  border-top: 1px solid var(--hairline);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: border-left-color 0.35s ease;
+}
+.service-row:last-child { border-bottom: 1px solid var(--hairline); }
+.service-row.active-row { border-left-color: var(--butterfly); }
+.svc-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--butterfly); padding-top: 0.4rem;
+  flex-shrink: 0; min-width: 2rem;
+}
+.svc-body { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+.svc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 300; font-style: italic;
+  color: var(--void); line-height: 1.2;
+  transition: color 0.3s;
+}
+.service-row.active-row .svc-name { color: var(--plum); }
+.svc-price {
+  font-family: 'Jost', sans-serif; font-size: 0.78rem;
+  color: var(--butterfly); letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.svc-desc {
+  font-size: 0.82rem; color: rgba(45,40,40,0.68);
+  line-height: 1.72; margin-top: 0.25rem;
+}
 
 /* ===== TOOLS ===== */
 #tools {
@@ -648,7 +663,11 @@ footer {
   #story { grid-template-columns: 1fr; }
   .about-photo-wrap { aspect-ratio: 4/3; max-height: 400px; }
 
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .diptych { grid-template-columns: 1fr; }
+  .diptych-left { display: none; }
+  .diptych-right { padding: 2rem 1.5rem; }
+  .service-row { border-left: none; padding-left: 0; }
+  .service-row.active-row { border-left: none; }
   .tools-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
 
@@ -657,12 +676,10 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr; }
   .tools-grid { grid-template-columns: 1fr; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
-  .service-card { aspect-ratio: 3/2.5; }
 }
 
 @media (max-width: 375px) {
@@ -841,123 +858,101 @@ footer {
       <p class="section-sub rv rv-delay-2">Every session is tailored to what your body needs most in that moment. In-home and on-site visits available with a travel fee based on distance.</p>
     </div>
 
-    <div class="services-grid">
-      <!-- 01 -->
-      <article class="service-card rv"
-        style="background-image:url('https://images.unsplash.com/photo-1629275622835-f42d081fe666?q=80&w=800&auto=format&fit=crop')"
-        aria-label="Chakra Alignment and Crystal Therapy Session">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">01</span>
-          <h3 class="card-title">Chakra Alignment &amp; Crystal Therapy</h3>
-          <p class="card-price">$120 per session</p>
-          <p class="card-desc">Align your chakras using targeted Reiki techniques, complemented by crystal therapy to enhance healing, release blockages, and restore energetic balance throughout the body.</p>
-        </div>
-      </article>
+    <div class="diptych">
+      <div class="diptych-left" aria-hidden="true">
+        <img class="diptych-img active" src="https://images.unsplash.com/photo-1629275622835-f42d081fe666?q=80&w=1200&auto=format&fit=crop" alt="">
+        <img class="diptych-img" src="https://plus.unsplash.com/premium_photo-1678355055149-5b907c3cd044?q=80&w=1200" alt="">
+        <img class="diptych-img" src="https://images.unsplash.com/photo-1562026700-3425431ecb5b?q=80&w=1200&auto=format&fit=crop" alt="">
+        <img class="diptych-img" src="https://images.unsplash.com/photo-1585860095562-08f80ef43d43?q=80&w=1200&auto=format&fit=crop" alt="">
+        <img class="diptych-img" src="https://plus.unsplash.com/premium_photo-1693007962207-e161ce1562f9?q=80&w=1200&auto=format&fit=crop" alt="">
+        <img class="diptych-img" src="https://plus.unsplash.com/premium_photo-1689254722721-2a052f9793ab?q=80&w=1200" alt="">
+        <img class="diptych-img" src="https://images.unsplash.com/photo-1461532257246-777de18cd58b?q=80&w=1200" alt="">
+        <img class="diptych-img" src="https://images.unsplash.com/photo-1605552981700-68484762d021?q=80&w=1200&auto=format&fit=crop" alt="">
+        <img class="diptych-img" src="https://images.unsplash.com/photo-1485808269728-77bb07c059a8?q=80&w=1200" alt="">
+      </div>
 
-      <!-- 02 -->
-      <article class="service-card rv rv-delay-1"
-        style="background-image:url('https://plus.unsplash.com/premium_photo-1678355055149-5b907c3cd044?q=80&w=800')"
-        aria-label="Quantum Biofeedback Stress Reduction Program">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">02</span>
-          <h3 class="card-title">Quantum Biofeedback Stress Reduction</h3>
-          <p class="card-price">$125 per session</p>
-          <p class="card-desc">A comprehensive, non-invasive analysis of your body's energetic responses, pinpointing areas of stress and tension, then using targeted frequencies to harmonize and restore your natural rhythm.</p>
+      <div class="diptych-right">
+        <div class="service-row active-row rv" data-idx="0">
+          <span class="svc-num">01</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Chakra Alignment &amp; Crystal Therapy</h3>
+            <p class="svc-price">$120 per session</p>
+            <p class="svc-desc">Align your chakras using targeted Reiki techniques, complemented by crystal therapy to enhance healing, release blockages, and restore energetic balance throughout the body.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 03 -->
-      <article class="service-card rv rv-delay-2"
-        style="background-image:url('https://images.unsplash.com/photo-1562026700-3425431ecb5b?q=80&w=800&auto=format&fit=crop')"
-        aria-label="Reiki Healing Session">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">03</span>
-          <h3 class="card-title">Reiki Healing Session</h3>
-          <p class="card-price">$120 per session</p>
-          <p class="card-desc">Healing energy is channeled through the hands to specific areas of the body, clearing stagnant energy and promoting the free flow of life-force throughout your entire system.</p>
+        <div class="service-row rv rv-delay-1" data-idx="1">
+          <span class="svc-num">02</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Quantum Biofeedback Stress Reduction</h3>
+            <p class="svc-price">$125 per session</p>
+            <p class="svc-desc">A comprehensive, non-invasive analysis of your body's energetic responses, pinpointing areas of stress and tension, then using targeted frequencies to harmonize and restore your natural rhythm.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 04 -->
-      <article class="service-card rv"
-        style="background-image:url('https://images.unsplash.com/photo-1585860095562-08f80ef43d43?q=80&w=800&auto=format&fit=crop')"
-        aria-label="Remote Energy Healing and Consultation">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">04</span>
-          <h3 class="card-title">Remote Energy Healing &amp; Consultation</h3>
-          <p class="card-price">$100 per session</p>
-          <p class="card-desc">Energy knows no distance. A full distance healing session tailored specifically to your needs, followed by a personal consultation to discuss your experience and continued support.</p>
+        <div class="service-row rv rv-delay-2" data-idx="2">
+          <span class="svc-num">03</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Reiki Healing Session</h3>
+            <p class="svc-price">$120 per session</p>
+            <p class="svc-desc">Healing energy is channeled through the hands to specific areas of the body, clearing stagnant energy and promoting the free flow of life-force throughout your entire system.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 05 -->
-      <article class="service-card rv rv-delay-1"
-        style="background-image:url('https://plus.unsplash.com/premium_photo-1693007962207-e161ce1562f9?q=80&w=800&auto=format&fit=crop')"
-        aria-label="House and Business Space Clearing and Blessing">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">05</span>
-          <h3 class="card-title">Space Clearing &amp; Blessing</h3>
-          <p class="card-price">$200 per session</p>
-          <p class="card-desc">Clear heavy, stagnant, or discordant energies from your home or place of business, then bless and intentionally set the space with positive, protective, and uplifting energy. In person or remotely.</p>
+        <div class="service-row rv" data-idx="3">
+          <span class="svc-num">04</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Remote Energy Healing &amp; Consultation</h3>
+            <p class="svc-price">$100 per session</p>
+            <p class="svc-desc">Energy knows no distance. A full distance healing session tailored specifically to your needs, followed by a personal consultation to discuss your experience and continued support.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 06 -->
-      <article class="service-card rv rv-delay-2"
-        style="background-image:url('https://plus.unsplash.com/premium_photo-1689254722721-2a052f9793ab?q=80&w=800')"
-        aria-label="Customized Guided Meditation Journey">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">06</span>
-          <h3 class="card-title">Customized Guided Meditation Journey</h3>
-          <p class="card-price">$90 per session</p>
-          <p class="card-desc">A unique guided meditation crafted specifically for you, incorporating visualization, breathwork, energetic healing, and affirmations. Conducted live or delivered as a personal audio recording.</p>
+        <div class="service-row rv rv-delay-1" data-idx="4">
+          <span class="svc-num">05</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Space Clearing &amp; Blessing</h3>
+            <p class="svc-price">$200 per session</p>
+            <p class="svc-desc">Clear heavy, stagnant, or discordant energies from your home or place of business, then bless and intentionally set the space with positive, protective, and uplifting energy. In person or remotely.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 07 -->
-      <article class="service-card rv"
-        style="background-image:url('https://images.unsplash.com/photo-1461532257246-777de18cd58b?q=80&w=800')"
-        aria-label="Customized Affirmations">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">07</span>
-          <h3 class="card-title">Customized Affirmations</h3>
-          <p class="card-price">$80 per session</p>
-          <p class="card-desc">Personalized affirmations written uniquely for your healing, your story, and your goals. Intentionally crafted to gently rewire limiting beliefs and support lasting energetic transformation.</p>
+        <div class="service-row rv rv-delay-2" data-idx="5">
+          <span class="svc-num">06</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Customized Guided Meditation Journey</h3>
+            <p class="svc-price">$90 per session</p>
+            <p class="svc-desc">A unique guided meditation crafted specifically for you, incorporating visualization, breathwork, energetic healing, and affirmations. Conducted live or delivered as a personal audio recording.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 08 -->
-      <article class="service-card rv rv-delay-1"
-        style="background-image:url('https://images.unsplash.com/photo-1605552981700-68484762d021?q=80&w=800&auto=format&fit=crop')"
-        aria-label="Personalized Healing Plan">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">08</span>
-          <h3 class="card-title">Personalized Healing Plan</h3>
-          <p class="card-price">$300</p>
-          <p class="card-desc">A comprehensive roadmap tailored to your unique healing needs, history, and deepest goals. Includes modality recommendations, lifestyle guidance, and a suggested session schedule.</p>
+        <div class="service-row rv" data-idx="6">
+          <span class="svc-num">07</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Customized Affirmations</h3>
+            <p class="svc-price">$80 per session</p>
+            <p class="svc-desc">Personalized affirmations written uniquely for your healing, your story, and your goals. Intentionally crafted to gently rewire limiting beliefs and support lasting energetic transformation.</p>
+          </div>
         </div>
-      </article>
 
-      <!-- 09 -->
-      <article class="service-card rv rv-delay-2"
-        style="background-image:url('https://images.unsplash.com/photo-1485808269728-77bb07c059a8?q=80&w=800')"
-        aria-label="Group Healing Workshops and Retreats">
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <span class="card-num">09</span>
-          <h3 class="card-title">Group Healing Workshops &amp; Retreats</h3>
-          <p class="card-price">Contact for rates</p>
-          <p class="card-desc">Guided group meditations, energy healing sessions, crystal work, and collaborative healing exercises. Thoughtfully crafted to foster community, deepen self-awareness, and create collective transformation.</p>
+        <div class="service-row rv rv-delay-1" data-idx="7">
+          <span class="svc-num">08</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Personalized Healing Plan</h3>
+            <p class="svc-price">$300</p>
+            <p class="svc-desc">A comprehensive roadmap tailored to your unique healing needs, history, and deepest goals. Includes modality recommendations, lifestyle guidance, and a suggested session schedule.</p>
+          </div>
         </div>
-      </article>
+
+        <div class="service-row rv rv-delay-2" data-idx="8">
+          <span class="svc-num">09</span>
+          <div class="svc-body">
+            <h3 class="svc-name">Group Healing Workshops &amp; Retreats</h3>
+            <p class="svc-price">Contact for rates</p>
+            <p class="svc-desc">Guided group meditations, energy healing sessions, crystal work, and collaborative healing exercises. Thoughtfully crafted to foster community, deepen self-awareness, and create collective transformation.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1197,6 +1192,19 @@ document.getElementById('mobileClose').addEventListener('click', closeMobileNav)
     const on = document.body.classList.toggle('a11y');
     localStorage.setItem(key, on ? '1' : '0');
     btn.setAttribute('aria-label', on ? 'Disable accessibility mode' : 'Enable accessibility mode');
+  });
+})();
+
+// Diptych services
+(function() {
+  const rows = document.querySelectorAll('.service-row');
+  const imgs = document.querySelectorAll('.diptych-img');
+  function activate(i) {
+    rows.forEach((r, j) => r.classList.toggle('active-row', i === j));
+    imgs.forEach((img, j) => img.classList.toggle('active', i === j));
+  }
+  rows.forEach((row, i) => {
+    row.addEventListener('mouseenter', () => activate(i));
   });
 })();
 
