@@ -137,14 +137,16 @@ button { cursor: pointer; }
 #portal-welcome.show { opacity: 1; pointer-events: auto; }
 .portal-card {
   position: relative;
-  width: 100%; max-width: 560px;
+  width: 100%; max-width: 460px;
+  max-height: 88vh;
+  overflow-y: auto;
   background: rgba(30,16,24,0.55);
   border: 1px solid var(--hairline);
-  border-radius: 28px;
+  border-radius: 24px;
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
   box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-  padding: clamp(1.9rem, 4.2vw, 2.9rem) clamp(2rem, 5vw, 3.1rem);
+  padding: clamp(1.5rem, 3.4vw, 2.1rem) clamp(1.5rem, 4vw, 2.2rem);
   text-align: center;
   transform: translateY(18px) scale(0.98);
   opacity: 0;
@@ -161,47 +163,47 @@ button { cursor: pointer; }
 }
 .portal-close:hover { border-color: var(--butterfly); color: var(--butterfly); }
 .portal-avatar {
-  display: block; margin: 0 auto 1.1rem;
-  width: 76px; height: 76px; border-radius: 50%; object-fit: cover;
+  display: block; margin: 0 auto 0.8rem;
+  width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
   object-position: center top;
   border: 2px solid rgba(212,168,83,0.55); box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
 .portal-eyebrow {
-  font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.2em;
+  font-family: 'Jost', sans-serif; font-size: 0.62rem; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--butterfly);
 }
 .portal-headline {
   font-family: 'Cormorant Garamond', serif; font-weight: 300;
-  font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.25;
-  color: var(--cream); margin: 0.8rem 0 0.9rem;
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem); line-height: 1.24;
+  color: var(--cream); margin: 0.6rem 0 0.7rem;
   text-wrap: balance;
 }
 .portal-headline em { font-style: italic; color: var(--butterfly); }
 .portal-body {
   font-family: 'Jost', sans-serif; font-weight: 300;
-  font-size: 0.9rem; line-height: 1.68; color: rgba(250,244,239,0.78);
-  margin-bottom: 0.9rem;
+  font-size: 0.8rem; line-height: 1.55; color: rgba(250,244,239,0.78);
+  margin-bottom: 0.7rem;
 }
 .portal-track-label {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 0.88rem; letter-spacing: 0.02em; line-height: 1.5;
-  color: var(--butterfly); margin-bottom: 0.9rem;
+  font-size: 0.78rem; letter-spacing: 0.02em; line-height: 1.4;
+  color: var(--butterfly); margin-bottom: 0.7rem;
 }
 .portal-track {
-  display: flex; align-items: center; gap: 0.9rem; width: 100%;
+  display: flex; align-items: center; gap: 0.7rem; width: 100%;
   background: rgba(212,168,83,0.06);
-  border: 1px solid var(--hairline); border-radius: 14px;
-  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 0.55rem 0.85rem;
   font-family: 'Jost', sans-serif; color: var(--cream);
   transition: border-color 0.25s, background 0.25s;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 .portal-track:hover { border-color: var(--butterfly); background: rgba(212,168,83,0.12); }
 .portal-track-icon {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
   border: 1px solid rgba(212,168,83,0.4);
   display: flex; align-items: center; justify-content: center;
-  color: var(--butterfly); font-size: 0.8rem;
+  color: var(--butterfly); font-size: 0.72rem;
 }
 .portal-track.playing .portal-track-icon { animation: audioPulse 2.4s ease-in-out infinite; border-color: rgba(212,168,83,0.8); }
 @keyframes audioPulse {
@@ -209,20 +211,20 @@ button { cursor: pointer; }
   50%      { box-shadow: 0 0 0 5px rgba(212,168,83,0); }
 }
 .portal-track-info { text-align: left; }
-.portal-track-title { font-size: 0.88rem; display: block; }
-.portal-track-artist { font-size: 0.7rem; color: rgba(250,244,239,0.55); }
+.portal-track-title { font-size: 0.8rem; display: block; }
+.portal-track-artist { font-size: 0.64rem; color: rgba(250,244,239,0.55); }
 .portal-enter {
-  font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.16em;
+  font-family: 'Jost', sans-serif; font-size: 0.64rem; letter-spacing: 0.16em;
   text-transform: uppercase; background: var(--butterfly); color: var(--void);
   border: 1px solid var(--butterfly); border-radius: 999px;
-  padding: 0.85rem 2.2rem; margin-top: 0.3rem;
+  padding: 0.7rem 1.9rem; margin-top: 0.2rem;
   white-space: nowrap; flex-shrink: 0;
   transition: background 0.3s, color 0.3s, letter-spacing 0.3s;
 }
 .portal-enter:hover { background: transparent; color: var(--butterfly); letter-spacing: 0.22em; }
 .portal-skip {
-  display: block; margin: 1.1rem auto 0;
-  font-family: 'Jost', sans-serif; font-size: 0.76rem;
+  display: block; margin: 0.8rem auto 0;
+  font-family: 'Jost', sans-serif; font-size: 0.7rem;
   color: rgba(250,244,239,0.6); background: none; border: none;
   text-decoration: underline; text-underline-offset: 3px;
 }
