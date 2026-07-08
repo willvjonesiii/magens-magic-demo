@@ -162,6 +162,11 @@ button { cursor: pointer; }
   transition: border-color 0.25s, color 0.25s;
 }
 .portal-close:hover { border-color: var(--butterfly); color: var(--butterfly); }
+.portal-logo {
+  display: block; margin: 0 auto 0.6rem;
+  width: 34px; height: 34px; object-fit: contain;
+  opacity: 0.9;
+}
 .portal-avatar {
   display: block; margin: 0 auto 0.8rem;
   width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
@@ -950,9 +955,10 @@ footer {
 <div id="portal-welcome" role="dialog" aria-modal="true" aria-labelledby="portalHeadline">
   <div class="portal-card">
     <button class="portal-close" id="portalClose" aria-label="Close">&#x2715;</button>
+    <img class="portal-logo" src="magensmagic-logo.png" alt="">
     <img class="portal-avatar" src="nd.png" alt="Magen Kutra">
     <p class="portal-eyebrow">Before You Begin</p>
-    <h2 class="portal-headline" id="portalHeadline">I always begin a session by reading what your body is already resonating at. Let this page do the <em>same</em> for you.</h2>
+    <h2 class="portal-headline" id="portalHeadline">Welcome. I always begin a session by reading what your body is already resonating at. Let this page do the <em>same</em> for you.</h2>
     <p class="portal-body">As you scroll, let the sound sit low in the background and simply notice what starts to soften. Nothing to do, nothing to figure out, just presence.</p>
     <p class="portal-track-label">Two pieces chosen with intention from my own healing playlist.</p>
     <div class="portal-tracks-row">
