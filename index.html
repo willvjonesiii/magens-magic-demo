@@ -79,33 +79,30 @@ button { cursor: pointer; }
 
 /* ===== MUSIC TOGGLE ===== */
 .music-btn {
-  position: fixed; bottom: 1.5rem; left: 1.5rem;
+  position: fixed; bottom: 6.3rem; right: 1.5rem;
   width: 48px; height: 48px; min-height: 48px;
   background: var(--void); color: var(--butterfly);
   border: 1.5px solid var(--butterfly); border-radius: 50%;
   z-index: 9000;
   display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; line-height: 1;
   box-shadow: 0 2px 16px rgba(0,0,0,0.32);
   transition: background 0.3s, transform 0.2s;
 }
 .music-btn:hover { background: rgba(212,168,83,0.12); transform: scale(1.08); }
 .music-btn:focus { outline: 3px solid var(--butterfly); outline-offset: 3px; }
-.music-btn svg { width: 18px; height: 18px; }
-.music-btn .note-bar { transform-origin: bottom; transition: transform 0.2s ease; }
 .music-btn.invite { animation: musicInvite 2.6s ease-in-out infinite; }
-.music-btn.playing .note-bar:nth-child(1) { animation: eqBar 0.9s ease-in-out infinite; }
-.music-btn.playing .note-bar:nth-child(2) { animation: eqBar 1.15s ease-in-out infinite 0.15s; }
-.music-btn.playing .note-bar:nth-child(3) { animation: eqBar 0.75s ease-in-out infinite 0.3s; }
+.music-btn.playing { animation: musicPlaying 2.4s ease-in-out infinite; }
 @keyframes musicInvite {
   0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 0 rgba(212,168,83,0.35); }
   50%      { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 9px rgba(212,168,83,0); }
 }
-@keyframes eqBar {
-  0%, 100% { transform: scaleY(0.35); }
-  50%      { transform: scaleY(1); }
+@keyframes musicPlaying {
+  0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 0 rgba(212,168,83,0.22); }
+  50%      { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 5px rgba(212,168,83,0); }
 }
 .music-label {
-  position: fixed; bottom: 1.9rem; left: 4.4rem;
+  position: fixed; bottom: 6.7rem; right: 5.2rem;
   background: var(--void); color: var(--butterfly);
   font-family: 'Jost', sans-serif; font-size: 0.62rem;
   letter-spacing: 0.1em; text-transform: uppercase;
@@ -115,109 +112,112 @@ button { cursor: pointer; }
   transition: opacity 0.4s ease;
 }
 .music-label.show { opacity: 1; }
-
-/* ===== PORTAL WELCOME LIGHTBOX ===== */
-.portal-overlay {
-  position: fixed; inset: 0; z-index: 9500;
-  background: rgba(30,16,24,0.86);
-  backdrop-filter: blur(14px);
-  display: none; align-items: center; justify-content: center;
-  padding: 1.5rem;
-}
-.portal-overlay.active { display: flex; }
-.portal-panel {
-  background: var(--void);
-  border: 1px solid rgba(212,168,83,0.3);
-  border-radius: 0.3rem;
-  max-width: 560px; width: 100%;
-  padding: clamp(2.2rem, 5vw, 3.4rem);
-  text-align: center;
-  position: relative;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
-  animation: portalIn 0.6s ease;
-}
-@keyframes portalIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: none; }
-}
-.portal-close {
-  position: absolute; top: 0.9rem; right: 1rem;
-  background: none; border: none; color: var(--butterfly);
-  font-size: 1.4rem; line-height: 1; opacity: 0.7;
-  min-height: 32px; min-width: 32px;
-}
-.portal-close:hover { opacity: 1; }
-.portal-photo {
-  width: 92px; height: 92px; border-radius: 50%;
-  object-fit: cover; object-position: center top;
-  margin: 0 auto 1.3rem; display: block;
-  border: 1.5px solid var(--butterfly);
-  box-shadow: 0 0 0 5px rgba(212,168,83,0.12);
-}
-.portal-eyebrow {
-  font-family: 'Jost', sans-serif; font-size: 0.68rem;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--butterfly); margin-bottom: 0.9rem;
-}
-.portal-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.7rem, 4vw, 2.3rem);
-  font-weight: 300; line-height: 1.25;
-  color: var(--cream); margin-bottom: 1rem;
-}
-.portal-heading em { font-style: italic; color: var(--butterfly); }
-.portal-body {
-  font-family: 'Jost', sans-serif; font-weight: 300;
-  font-size: 0.95rem; line-height: 1.75;
-  color: rgba(250,244,239,0.78);
-  margin-bottom: 1.8rem;
-}
-.portal-tracks {
-  display: flex; flex-direction: column; gap: 0.6rem;
-  margin-bottom: 1.6rem; text-align: left;
-}
-.portal-track-row {
-  display: flex; align-items: center; gap: 0.8rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(212,168,83,0.22);
-  border-radius: 2px;
-  background: rgba(212,168,83,0.04);
-  transition: background 0.25s, border-color 0.25s;
-}
-.portal-track-row:hover { background: rgba(212,168,83,0.1); border-color: rgba(212,168,83,0.5); }
-.portal-track-row.selected { background: rgba(212,168,83,0.15); border-color: var(--butterfly); }
-.portal-track-icon {
-  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
-  background: rgba(212,168,83,0.14); color: var(--butterfly);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem;
-}
-.portal-track-info { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
-.portal-track-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.02rem; color: var(--cream); }
-.portal-track-artist { font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.05em; color: rgba(250,244,239,0.55); }
-.portal-actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
-.portal-btn-enter {
-  background: var(--butterfly); color: var(--void);
-  border: none; padding: 0.9rem 1.8rem;
-  font-family: 'Jost', sans-serif; font-size: 0.72rem;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  border-radius: 2px; white-space: nowrap; flex-shrink: 0;
-  transition: background 0.3s;
-}
-.portal-btn-enter:hover { background: #b8902f; }
-.portal-btn-silent {
-  background: transparent; color: rgba(250,244,239,0.6);
-  border: 1px solid rgba(250,244,239,0.25);
-  padding: 0.9rem 1.6rem;
-  font-family: 'Jost', sans-serif; font-size: 0.72rem;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  border-radius: 2px; white-space: nowrap; flex-shrink: 0;
-  transition: border-color 0.3s, color 0.3s;
-}
-.portal-btn-silent:hover { border-color: var(--butterfly); color: var(--butterfly); }
 @media (max-width: 480px) {
   .music-label { display: none; }
 }
+
+/* ===== PORTAL WELCOME LIGHTBOX ===== */
+#portal-welcome {
+  position: fixed; inset: 0; z-index: 9500;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  background: rgba(30,16,24,0.28);
+  opacity: 0; pointer-events: none;
+  transition: opacity 1.6s ease;
+}
+#portal-welcome.show { opacity: 1; pointer-events: auto; }
+.portal-card {
+  position: relative;
+  width: 100%; max-width: 560px;
+  background: rgba(30,16,24,0.55);
+  border: 1px solid var(--hairline);
+  border-radius: 28px;
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  padding: clamp(1.9rem, 4.2vw, 2.9rem) clamp(2rem, 5vw, 3.1rem);
+  text-align: center;
+  transform: translateY(18px) scale(0.98);
+  opacity: 0;
+  transition: transform 1.8s cubic-bezier(.22,.61,.36,1), opacity 1.8s ease;
+}
+#portal-welcome.show .portal-card { transform: translateY(0) scale(1); opacity: 1; }
+.portal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--hairline); background: transparent;
+  color: rgba(250,244,239,0.6); font-size: 1rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.25s, color 0.25s;
+}
+.portal-close:hover { border-color: var(--butterfly); color: var(--butterfly); }
+.portal-avatar {
+  display: block; margin: 0 auto 1.1rem;
+  width: 76px; height: 76px; border-radius: 50%; object-fit: cover;
+  object-position: center top;
+  border: 2px solid rgba(212,168,83,0.55); box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.portal-eyebrow {
+  font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--butterfly);
+}
+.portal-headline {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.25;
+  color: var(--cream); margin: 0.8rem 0 0.9rem;
+  text-wrap: balance;
+}
+.portal-headline em { font-style: italic; color: var(--butterfly); }
+.portal-body {
+  font-family: 'Jost', sans-serif; font-weight: 300;
+  font-size: 0.9rem; line-height: 1.68; color: rgba(250,244,239,0.78);
+  margin-bottom: 0.9rem;
+}
+.portal-track-label {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 0.88rem; letter-spacing: 0.02em; line-height: 1.5;
+  color: var(--butterfly); margin-bottom: 0.9rem;
+}
+.portal-track {
+  display: flex; align-items: center; gap: 0.9rem; width: 100%;
+  background: rgba(212,168,83,0.06);
+  border: 1px solid var(--hairline); border-radius: 14px;
+  padding: 0.75rem 1.1rem;
+  font-family: 'Jost', sans-serif; color: var(--cream);
+  transition: border-color 0.25s, background 0.25s;
+  margin-bottom: 1rem;
+}
+.portal-track:hover { border-color: var(--butterfly); background: rgba(212,168,83,0.12); }
+.portal-track-icon {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(212,168,83,0.4);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--butterfly); font-size: 0.8rem;
+}
+.portal-track.playing .portal-track-icon { animation: audioPulse 2.4s ease-in-out infinite; border-color: rgba(212,168,83,0.8); }
+@keyframes audioPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,83,0.35); }
+  50%      { box-shadow: 0 0 0 5px rgba(212,168,83,0); }
+}
+.portal-track-info { text-align: left; }
+.portal-track-title { font-size: 0.88rem; display: block; }
+.portal-track-artist { font-size: 0.7rem; color: rgba(250,244,239,0.55); }
+.portal-enter {
+  font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.16em;
+  text-transform: uppercase; background: var(--butterfly); color: var(--void);
+  border: 1px solid var(--butterfly); border-radius: 999px;
+  padding: 0.85rem 2.2rem; margin-top: 0.3rem;
+  white-space: nowrap; flex-shrink: 0;
+  transition: background 0.3s, color 0.3s, letter-spacing 0.3s;
+}
+.portal-enter:hover { background: transparent; color: var(--butterfly); letter-spacing: 0.22em; }
+.portal-skip {
+  display: block; margin: 1.1rem auto 0;
+  font-family: 'Jost', sans-serif; font-size: 0.76rem;
+  color: rgba(250,244,239,0.6); background: none; border: none;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.portal-skip:hover { color: var(--butterfly); }
 
 /* ===== A11Y MODE ===== */
 body.a11y {
@@ -923,28 +923,35 @@ footer {
 
 <!-- Background Music -->
 <audio id="bgAudio" preload="auto"></audio>
-<button class="music-btn invite" id="musicToggle" aria-label="Toggle background music" title="Frequency & Sound">
-  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect class="note-bar" x="2.5" y="7" width="2.4" height="8" rx="1" fill="#d4a853"/>
-    <rect class="note-bar" x="7.8" y="3" width="2.4" height="12" rx="1" fill="#d4a853"/>
-    <rect class="note-bar" x="13.1" y="9" width="2.4" height="6" rx="1" fill="#d4a853"/>
-  </svg>
-</button>
+<button class="music-btn invite" id="musicToggle" aria-label="Toggle background music" title="Frequency & Sound">&#9834;</button>
 <div class="music-label" id="musicLabel"></div>
 
 <!-- Portal Welcome Lightbox -->
-<div class="portal-overlay" id="portalOverlay" role="dialog" aria-modal="true" aria-label="Welcome">
-  <div class="portal-panel">
+<div id="portal-welcome" role="dialog" aria-modal="true" aria-labelledby="portalHeadline">
+  <div class="portal-card">
     <button class="portal-close" id="portalClose" aria-label="Close">&#x2715;</button>
-    <img src="nd.png" alt="Magen Kutra" class="portal-photo">
-    <p class="portal-eyebrow">A Personal Invitation</p>
-    <h2 class="portal-heading">Let the <em>frequency</em> find you.</h2>
-    <p class="portal-body">Before we begin, know that every session I hold starts with reading what your body is already resonating at, then meeting it with the exact frequency it needs to soften and restore. This page works the same way. I have chosen these two pieces from my own healing playlist, each one tuned for release, and set them to play low beneath you as you scroll. You do not have to do anything. Simply let it hum in the background, and notice what begins to settle.</p>
-    <div class="portal-tracks" id="portalTracks"></div>
-    <div class="portal-actions">
-      <button class="portal-btn-enter" id="portalEnter">Begin With Sound</button>
-      <button class="portal-btn-silent" id="portalSilent">Continue in Silence</button>
-    </div>
+    <img class="portal-avatar" src="nd.png" alt="Magen Kutra">
+    <p class="portal-eyebrow">Before You Begin</p>
+    <h2 class="portal-headline" id="portalHeadline">I always begin a session by reading what your body is already resonating at. Let this page do the <em>same</em> for you.</h2>
+    <p class="portal-body">As you scroll, let the sound sit low in the background and simply notice what starts to soften. Nothing to do, nothing to figure out, just presence.</p>
+    <p class="portal-track-label">Two pieces chosen with intention from my own healing playlist.</p>
+    <button class="portal-track" data-track-index="0">
+      <span class="portal-track-icon">&#9834;</span>
+      <span class="portal-track-info">
+        <span class="portal-track-title">Dreams Rewound</span>
+        <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
+      </span>
+    </button>
+    <button class="portal-track" data-track-index="1">
+      <span class="portal-track-icon">&#9834;</span>
+      <span class="portal-track-info">
+        <span class="portal-track-title">Time's Embrace</span>
+        <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
+      </span>
+    </button>
+    <br>
+    <button class="portal-enter" id="portalEnter">Enter &nbsp;&#x2192;</button>
+    <button class="portal-skip" id="portalSkip">Continue in silence</button>
   </div>
 </div>
 
@@ -1508,7 +1515,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 })();
 </script>
 
-<!-- Background Music + Portal Welcome -->
+<!-- Background Music -->
 <script>
 (function () {
   var TRACKS = [
@@ -1518,8 +1525,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
   var audio = document.getElementById('bgAudio');
   var btn = document.getElementById('musicToggle');
   var label = document.getElementById('musicLabel');
-  var overlay = document.getElementById('portalOverlay');
-  var tracksWrap = document.getElementById('portalTracks');
   var trackIndex = 0;
   var labelTimer = null;
 
@@ -1534,7 +1539,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
       });
     }
     updateLabel();
-    markSelected();
   }
 
   function updateLabel() {
@@ -1545,13 +1549,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
     label.classList.add('show');
     clearTimeout(labelTimer);
     labelTimer = setTimeout(function () { label.classList.remove('show'); }, 3000);
-  }
-
-  function markSelected() {
-    var rows = tracksWrap.querySelectorAll('.portal-track-row');
-    rows.forEach(function (row, i) {
-      row.classList.toggle('selected', i === trackIndex);
-    });
   }
 
   function persist() {
@@ -1577,20 +1574,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
     btn.classList.remove('playing');
   }
 
-  TRACKS.forEach(function (t, i) {
-    var row = document.createElement('div');
-    row.className = 'portal-track-row';
-    row.innerHTML = '<span class="portal-track-icon">&#9834;</span>' +
-      '<div class="portal-track-info"><span class="portal-track-title">' + t.title + '</span>' +
-      '<span class="portal-track-artist">' + t.artist + '</span></div>';
-    row.addEventListener('click', function () {
-      loadTrack(i);
-      playAudio();
-      window.mmPlayTrack = window.mmPlayTrack;
-    });
-    tracksWrap.appendChild(row);
-  });
-
   window.mmPlayTrack = function (i) {
     loadTrack(i);
     playAudio();
@@ -1614,25 +1597,12 @@ document.getElementById('contactForm').addEventListener('submit', async function
   });
   window.addEventListener('pagehide', persist);
 
-  var closePortal = function () {
-    overlay.classList.remove('active');
-    document.documentElement.style.overflow = '';
-    try { sessionStorage.setItem('mm_portal_seen', '1'); } catch (e) {}
-  };
-  document.getElementById('portalClose').addEventListener('click', closePortal);
-  document.getElementById('portalEnter').addEventListener('click', function () {
-    closePortal();
-    playAudio();
-  });
-  document.getElementById('portalSilent').addEventListener('click', closePortal);
-
   var resumed = false;
   try {
     var saved = JSON.parse(sessionStorage.getItem('mm_music') || 'null');
     if (saved) {
       loadTrack(saved.trackIndex || 0, saved.currentTime || 0);
       if (saved.playing) {
-        resumed = true;
         document.addEventListener('click', function onceClick() {
           document.removeEventListener('click', onceClick);
           playAudio();
@@ -1642,14 +1612,62 @@ document.getElementById('contactForm').addEventListener('submit', async function
       loadTrack(0);
     }
   } catch (e) { loadTrack(0); }
+})();
+</script>
 
-  var seen = false;
-  try { seen = sessionStorage.getItem('mm_portal_seen') === '1'; } catch (e) {}
-  if (!seen && !resumed && window.innerWidth >= 900) {
-    setTimeout(function () {
-      overlay.classList.add('active');
-    }, 900);
+<!-- Portal Welcome -->
+<script>
+(function () {
+  var overlay = document.getElementById('portal-welcome');
+  var closeBtn = document.getElementById('portalClose');
+  var enterBtn = document.getElementById('portalEnter');
+  var skipBtn = document.getElementById('portalSkip');
+  var trackBtns = overlay ? overlay.querySelectorAll('.portal-track') : [];
+  if (!overlay) return;
+
+  var KEY = 'mm_portal_seen';
+
+  function open() {
+    overlay.classList.add('show');
+    document.documentElement.style.overflow = 'hidden';
   }
+  function close() {
+    overlay.classList.remove('show');
+    document.documentElement.style.overflow = '';
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+
+  var alreadySeen = false;
+  try { alreadySeen = !!sessionStorage.getItem(KEY); } catch (e) {}
+
+  if (!alreadySeen) {
+    var triggered = false;
+    var triggerEvents = ['scroll', 'touchstart', 'wheel'];
+    function onFirstMove() {
+      if (triggered) return;
+      triggered = true;
+      triggerEvents.forEach(function (evt) { window.removeEventListener(evt, onFirstMove); });
+      open();
+    }
+    triggerEvents.forEach(function (evt) { window.addEventListener(evt, onFirstMove, { passive: true }); });
+  }
+
+  closeBtn.addEventListener('click', close);
+  skipBtn.addEventListener('click', close);
+  enterBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) close();
+  });
+
+  trackBtns.forEach(function (trackBtn) {
+    trackBtn.addEventListener('click', function () {
+      var idx = parseInt(trackBtn.getAttribute('data-track-index'), 10) || 0;
+      if (window.mmPlayTrack) window.mmPlayTrack(idx);
+      trackBtns.forEach(function (b) { b.classList.remove('playing'); });
+      trackBtn.classList.add('playing');
+    });
+  });
 })();
 </script>
 </body>
