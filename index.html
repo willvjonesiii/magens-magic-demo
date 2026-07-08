@@ -299,9 +299,15 @@ body.a11y .testimonial-item { background: #fff; }
 }
 .about-content { padding-top: 0.5rem; position: relative; overflow: hidden; }
 .about-watermark {
-  position: absolute; right: -6%; bottom: -8%;
+  position: absolute; right: -6%; top: -6%;
   width: 58%; pointer-events: none; user-select: none;
   opacity: 0.065;
+}
+.diptych-watermark {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62%; pointer-events: none; user-select: none;
+  opacity: 0.055;
 }
 .about-content .eyebrow { color: var(--mauve); }
 .about-content h2 {
@@ -395,6 +401,7 @@ body.a11y .testimonial-item { background: #fff; }
 .diptych-right {
   padding: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3.5rem);
   display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
 }
 .service-row {
   display: flex; gap: 1.4rem;
@@ -938,6 +945,7 @@ footer {
       </div>
 
       <div class="diptych-right">
+        <img src="magensmagic-logo.png" alt="" class="diptych-watermark" aria-hidden="true">
         <div class="service-row active-row rv" data-idx="0">
           <span class="svc-num">01</span>
           <div class="svc-body">
