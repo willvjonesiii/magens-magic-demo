@@ -137,7 +137,7 @@ button { cursor: pointer; }
 #portal-welcome.show { opacity: 1; pointer-events: auto; }
 .portal-card {
   position: relative;
-  width: 100%; max-width: 460px;
+  width: 100%; max-width: 640px;
   max-height: 88vh;
   overflow-y: auto;
   background: rgba(30,16,24,0.55);
@@ -189,14 +189,17 @@ button { cursor: pointer; }
   font-size: 0.78rem; letter-spacing: 0.02em; line-height: 1.4;
   color: var(--butterfly); margin-bottom: 0.7rem;
 }
+.portal-tracks-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
 .portal-track {
-  display: flex; align-items: center; gap: 0.7rem; width: 100%;
+  display: flex; align-items: center; gap: 0.6rem; width: 100%;
   background: rgba(212,168,83,0.06);
   border: 1px solid var(--hairline); border-radius: 12px;
-  padding: 0.55rem 0.85rem;
+  padding: 0.55rem 0.7rem;
   font-family: 'Jost', sans-serif; color: var(--cream);
   transition: border-color 0.25s, background 0.25s;
-  margin-bottom: 0.6rem;
 }
 .portal-track:hover { border-color: var(--butterfly); background: rgba(212,168,83,0.12); }
 .portal-track-icon {
@@ -952,21 +955,22 @@ footer {
     <h2 class="portal-headline" id="portalHeadline">I always begin a session by reading what your body is already resonating at. Let this page do the <em>same</em> for you.</h2>
     <p class="portal-body">As you scroll, let the sound sit low in the background and simply notice what starts to soften. Nothing to do, nothing to figure out, just presence.</p>
     <p class="portal-track-label">Two pieces chosen with intention from my own healing playlist.</p>
-    <button class="portal-track" data-track-index="0">
-      <span class="portal-track-icon">&#9834;</span>
-      <span class="portal-track-info">
-        <span class="portal-track-title">Dreams Rewound</span>
-        <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
-      </span>
-    </button>
-    <button class="portal-track" data-track-index="1">
-      <span class="portal-track-icon">&#9834;</span>
-      <span class="portal-track-info">
-        <span class="portal-track-title">Time's Embrace</span>
-        <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
-      </span>
-    </button>
-    <br>
+    <div class="portal-tracks-row">
+      <button class="portal-track" data-track-index="0">
+        <span class="portal-track-icon">&#9834;</span>
+        <span class="portal-track-info">
+          <span class="portal-track-title">Dreams Rewound</span>
+          <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
+        </span>
+      </button>
+      <button class="portal-track" data-track-index="1">
+        <span class="portal-track-icon">&#9834;</span>
+        <span class="portal-track-info">
+          <span class="portal-track-title">Time's Embrace</span>
+          <span class="portal-track-artist">Ethan Echo &amp; Jody Livin</span>
+        </span>
+      </button>
+    </div>
     <button class="portal-enter" id="portalEnter">Enter &nbsp;&#x2192;</button>
     <button class="portal-skip" id="portalSkip">Continue in silence</button>
   </div>
