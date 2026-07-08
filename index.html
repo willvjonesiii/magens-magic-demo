@@ -91,8 +91,13 @@ button { cursor: pointer; }
 }
 .music-btn:hover { background: rgba(212,168,83,0.12); transform: scale(1.08); }
 .music-btn:focus { outline: 3px solid var(--butterfly); outline-offset: 3px; }
+.music-btn svg { width: 18px; height: 18px; }
+.music-btn .note-bar { transform-origin: bottom; transition: transform 0.2s ease; }
 .music-btn.invite { animation: musicInvite 2.6s ease-in-out infinite; }
 .music-btn.playing { animation: musicPlaying 2.4s ease-in-out infinite; }
+.music-btn.playing .note-bar:nth-child(1) { animation: eqBar 0.9s ease-in-out infinite; }
+.music-btn.playing .note-bar:nth-child(2) { animation: eqBar 1.15s ease-in-out infinite 0.15s; }
+.music-btn.playing .note-bar:nth-child(3) { animation: eqBar 0.75s ease-in-out infinite 0.3s; }
 @keyframes musicInvite {
   0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 0 rgba(212,168,83,0.35); }
   50%      { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 9px rgba(212,168,83,0); }
@@ -100,6 +105,10 @@ button { cursor: pointer; }
 @keyframes musicPlaying {
   0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 0 rgba(212,168,83,0.22); }
   50%      { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 5px rgba(212,168,83,0); }
+}
+@keyframes eqBar {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
 }
 .music-label {
   position: fixed; bottom: 6.7rem; right: 5.2rem;
@@ -923,7 +932,13 @@ footer {
 
 <!-- Background Music -->
 <audio id="bgAudio" preload="auto"></audio>
-<button class="music-btn invite" id="musicToggle" aria-label="Toggle background music" title="Frequency & Sound">&#9834;</button>
+<button class="music-btn invite" id="musicToggle" aria-label="Toggle background music" title="Frequency & Sound">
+  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect class="note-bar" x="2.5" y="7" width="2.4" height="8" rx="1" fill="#d4a853"/>
+    <rect class="note-bar" x="7.8" y="3" width="2.4" height="12" rx="1" fill="#d4a853"/>
+    <rect class="note-bar" x="13.1" y="9" width="2.4" height="6" rx="1" fill="#d4a853"/>
+  </svg>
+</button>
 <div class="music-label" id="musicLabel"></div>
 
 <!-- Portal Welcome Lightbox -->
