@@ -67,14 +67,14 @@ button { cursor: pointer; }
 .a11y-btn {
   position: fixed; bottom: 1.5rem; right: 1.5rem;
   width: 48px; height: 48px; min-height: 48px;
-  background: var(--mauve); color: #fff;
+  background: var(--butterfly); color: var(--void);
   border: none; border-radius: 50%;
   font-size: 1.1rem; z-index: 9000;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 16px rgba(0,0,0,0.22);
   transition: background 0.3s, transform 0.2s;
 }
-.a11y-btn:hover { background: var(--plum); transform: scale(1.08); }
+.a11y-btn:hover { background: #b8902f; transform: scale(1.08); }
 .a11y-btn:focus { outline: 3px solid var(--butterfly); outline-offset: 3px; }
 
 /* ===== A11Y MODE ===== */
@@ -135,17 +135,17 @@ body.a11y .testimonial-item { background: #fff; }
   min-height: 44px; display: flex; align-items: center;
 }
 .nav.scrolled .nav-links a { color: var(--ink); }
-.nav-links a:hover, .nav.scrolled .nav-links a:hover { color: var(--mauve); }
+.nav-links a:hover, .nav.scrolled .nav-links a:hover { color: var(--butterfly); }
 .btn-primary {
   font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 500;
   letter-spacing: 0.17em; text-transform: uppercase;
-  background: var(--mauve); color: #fff;
+  background: var(--butterfly); color: var(--void);
   border: none; padding: 0.75rem 1.7rem;
   white-space: nowrap; flex-shrink: 0;
   transition: background 0.3s;
   min-height: 44px; display: inline-flex; align-items: center;
 }
-.btn-primary:hover { background: var(--plum); }
+.btn-primary:hover { background: #b8902f; }
 .btn-primary:focus { outline: 3px solid var(--butterfly); outline-offset: 2px; }
 .btn-ghost {
   font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 400;
@@ -330,7 +330,7 @@ body.a11y .testimonial-item { background: #fff; }
   transition: border-color 0.3s, color 0.3s;
   min-height: 44px;
 }
-.btn-read-more:hover { border-color: var(--mauve); color: var(--plum); }
+.btn-read-more:hover { border-color: var(--butterfly); color: #b8902f; }
 .credentials {
   display: flex; flex-wrap: wrap; gap: 0.5rem;
   margin-top: 2rem; padding-top: 1.5rem;
@@ -547,20 +547,20 @@ body.a11y .testimonial-item { background: #fff; }
   transition: border-color 0.3s; outline: none; resize: none;
   border-radius: 0.15rem;
 }
-.form-input:focus, .form-textarea:focus { border-color: var(--mauve); }
+.form-input:focus, .form-textarea:focus { border-color: var(--butterfly); }
 .form-textarea { min-height: 140px; }
 .form-submit {
   align-self: flex-start;
   font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
-  background: var(--mauve); color: #fff; border: none;
+  background: var(--butterfly); color: var(--void); border: none;
   padding: 0.9rem 2.4rem;
   white-space: nowrap; flex-shrink: 0;
   transition: background 0.3s;
   min-height: 48px; display: inline-flex; align-items: center;
   border-radius: 0.1rem;
 }
-.form-submit:hover { background: var(--plum); }
+.form-submit:hover { background: #b8902f; }
 .form-submit:focus { outline: 3px solid var(--butterfly); outline-offset: 2px; }
 
 /* ===== CTA BAND ===== */
