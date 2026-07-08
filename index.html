@@ -303,12 +303,6 @@ body.a11y .testimonial-item { background: #fff; }
   width: 58%; pointer-events: none; user-select: none;
   opacity: 0.065;
 }
-.diptych-watermark {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 62%; pointer-events: none; user-select: none;
-  opacity: 0.055;
-}
 .about-content .eyebrow { color: var(--mauve); }
 .about-content h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -401,7 +395,23 @@ body.a11y .testimonial-item { background: #fff; }
 .diptych-right {
   padding: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3.5rem);
   display: flex; flex-direction: column;
-  position: relative; overflow: hidden;
+  position: relative;
+}
+.diptych-watermark-wrap {
+  position: sticky;
+  top: 28vh;
+  height: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+.diptych-watermark {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 62%; pointer-events: none; user-select: none;
+  opacity: 0.055;
 }
 .service-row {
   display: flex; gap: 1.4rem;
@@ -945,7 +955,9 @@ footer {
       </div>
 
       <div class="diptych-right">
-        <img src="magensmagic-logo.png" alt="" class="diptych-watermark" aria-hidden="true">
+        <div class="diptych-watermark-wrap">
+          <img src="magensmagic-logo.png" alt="" class="diptych-watermark" aria-hidden="true">
+        </div>
         <div class="service-row active-row rv" data-idx="0">
           <span class="svc-num">01</span>
           <div class="svc-body">
