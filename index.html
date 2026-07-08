@@ -297,7 +297,12 @@ body.a11y .testimonial-item { background: #fff; }
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--butterfly); text-align: center;
 }
-.about-content { padding-top: 0.5rem; }
+.about-content { padding-top: 0.5rem; position: relative; overflow: hidden; }
+.about-watermark {
+  position: absolute; right: -6%; bottom: -8%;
+  width: 58%; pointer-events: none; user-select: none;
+  opacity: 0.065;
+}
 .about-content .eyebrow { color: var(--mauve); }
 .about-content h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -502,6 +507,12 @@ body.a11y .testimonial-item { background: #fff; }
   background: var(--cream); padding: 2rem 1.8rem;
   border-top: 3px solid var(--butterfly);
   border-radius: 0 0 0.2rem 0.2rem;
+  position: relative; overflow: hidden;
+}
+.testimonial-logo {
+  position: absolute; bottom: 1.1rem; right: 1.1rem;
+  width: 30px; height: 30px; object-fit: contain;
+  opacity: 0.28; pointer-events: none; user-select: none;
 }
 .testimonial-quote {
   font-family: 'Cormorant Garamond', serif;
@@ -872,6 +883,7 @@ footer {
     </div>
 
     <div class="about-content">
+      <img src="magensmagic-logo.png" alt="" class="about-watermark" aria-hidden="true">
       <span class="eyebrow rv">My Healing Journey</span>
       <h2 id="story-heading" class="rv rv-delay-1">The road to<br><em>soul-deep healing</em></h2>
 
@@ -1070,16 +1082,19 @@ footer {
 
     <div class="testimonials-grid">
       <article class="testimonial-item rv" aria-label="Testimonial from Sarah M.">
+        <img src="magensmagic-logo.png" alt="" class="testimonial-logo" aria-hidden="true">
         <p class="testimonial-quote">"My first session with Magen completely shifted something I had been carrying for years. I left feeling lighter, clearer, and more at peace than I have in a long time. Her presence is unlike anything I have ever experienced."</p>
         <p class="testimonial-attr">Sarah M. &nbsp;&#x2756;&nbsp; Houston, TX</p>
       </article>
 
       <article class="testimonial-item rv rv-delay-1" aria-label="Testimonial from Priya T.">
+        <img src="magensmagic-logo.png" alt="" class="testimonial-logo" aria-hidden="true">
         <p class="testimonial-quote">"I was skeptical, but Magen's energy made me feel completely safe from the very first moment. The chakra alignment and crystal therapy session was profound. I have been recommending her to everyone I know."</p>
         <p class="testimonial-attr">Priya T. &nbsp;&#x2756;&nbsp; Austin, TX</p>
       </article>
 
       <article class="testimonial-item rv rv-delay-2" aria-label="Testimonial from Carolyn R.">
+        <img src="magensmagic-logo.png" alt="" class="testimonial-logo" aria-hidden="true">
         <p class="testimonial-quote">"The distance healing session was just as powerful as being in the room, if not more so. Magen has a true gift, and I am so grateful she is sharing it with the world. My life has genuinely shifted."</p>
         <p class="testimonial-attr">Carolyn R. &nbsp;&#x2756;&nbsp; San Antonio, TX</p>
       </article>
