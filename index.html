@@ -67,14 +67,14 @@ button { cursor: pointer; }
 .a11y-btn {
   position: fixed; bottom: 1.5rem; right: 1.5rem;
   width: 48px; height: 48px; min-height: 48px;
-  background: var(--butterfly); color: var(--void);
-  border: none; border-radius: 50%;
-  font-size: 1.1rem; z-index: 9000;
+  background: var(--void); color: var(--butterfly);
+  border: 1.5px solid var(--butterfly); border-radius: 50%;
+  z-index: 9000;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.32);
   transition: background 0.3s, transform 0.2s;
 }
-.a11y-btn:hover { background: #b8902f; transform: scale(1.08); }
+.a11y-btn:hover { background: rgba(212,168,83,0.12); transform: scale(1.08); }
 .a11y-btn:focus { outline: 3px solid var(--butterfly); outline-offset: 3px; }
 
 /* ===== A11Y MODE ===== */
@@ -753,7 +753,13 @@ footer {
 
 <!-- A11Y Toggle -->
 <button class="a11y-btn" id="a11yToggle" aria-label="Toggle accessibility mode" title="Accessibility mode">
-  <span aria-hidden="true">&#9855;</span>
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="11" cy="3.5" r="2.5" fill="#d4a853"/>
+    <line x1="11" y1="6" x2="11" y2="14.5" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
+    <path d="M4.5 9.5 L11 6.5 L17.5 9.5" stroke="#d4a853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11 14.5 L7 21" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
+    <path d="M11 14.5 L15 21" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
+  </svg>
 </button>
 
 <!-- Mobile Nav -->
