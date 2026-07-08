@@ -77,6 +77,148 @@ button { cursor: pointer; }
 .a11y-btn:hover { background: rgba(212,168,83,0.12); transform: scale(1.08); }
 .a11y-btn:focus { outline: 3px solid var(--butterfly); outline-offset: 3px; }
 
+/* ===== MUSIC TOGGLE ===== */
+.music-btn {
+  position: fixed; bottom: 1.5rem; left: 1.5rem;
+  width: 48px; height: 48px; min-height: 48px;
+  background: var(--void); color: var(--butterfly);
+  border: 1.5px solid var(--butterfly); border-radius: 50%;
+  z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.32);
+  transition: background 0.3s, transform 0.2s;
+}
+.music-btn:hover { background: rgba(212,168,83,0.12); transform: scale(1.08); }
+.music-btn:focus { outline: 3px solid var(--butterfly); outline-offset: 3px; }
+.music-btn svg { width: 18px; height: 18px; }
+.music-btn .note-bar { transform-origin: bottom; transition: transform 0.2s ease; }
+.music-btn.invite { animation: musicInvite 2.6s ease-in-out infinite; }
+.music-btn.playing .note-bar:nth-child(1) { animation: eqBar 0.9s ease-in-out infinite; }
+.music-btn.playing .note-bar:nth-child(2) { animation: eqBar 1.15s ease-in-out infinite 0.15s; }
+.music-btn.playing .note-bar:nth-child(3) { animation: eqBar 0.75s ease-in-out infinite 0.3s; }
+@keyframes musicInvite {
+  0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 0 rgba(212,168,83,0.35); }
+  50%      { box-shadow: 0 2px 16px rgba(0,0,0,0.32), 0 0 0 9px rgba(212,168,83,0); }
+}
+@keyframes eqBar {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+.music-label {
+  position: fixed; bottom: 1.9rem; left: 4.4rem;
+  background: var(--void); color: var(--butterfly);
+  font-family: 'Jost', sans-serif; font-size: 0.62rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.55rem 0.9rem; border: 1px solid rgba(212,168,83,0.35);
+  border-radius: 2px; white-space: nowrap;
+  z-index: 8999; opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.music-label.show { opacity: 1; }
+
+/* ===== PORTAL WELCOME LIGHTBOX ===== */
+.portal-overlay {
+  position: fixed; inset: 0; z-index: 9500;
+  background: rgba(30,16,24,0.86);
+  backdrop-filter: blur(14px);
+  display: none; align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+.portal-overlay.active { display: flex; }
+.portal-panel {
+  background: var(--void);
+  border: 1px solid rgba(212,168,83,0.3);
+  border-radius: 0.3rem;
+  max-width: 560px; width: 100%;
+  padding: clamp(2.2rem, 5vw, 3.4rem);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  animation: portalIn 0.6s ease;
+}
+@keyframes portalIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.portal-close {
+  position: absolute; top: 0.9rem; right: 1rem;
+  background: none; border: none; color: var(--butterfly);
+  font-size: 1.4rem; line-height: 1; opacity: 0.7;
+  min-height: 32px; min-width: 32px;
+}
+.portal-close:hover { opacity: 1; }
+.portal-photo {
+  width: 92px; height: 92px; border-radius: 50%;
+  object-fit: cover; object-position: center top;
+  margin: 0 auto 1.3rem; display: block;
+  border: 1.5px solid var(--butterfly);
+  box-shadow: 0 0 0 5px rgba(212,168,83,0.12);
+}
+.portal-eyebrow {
+  font-family: 'Jost', sans-serif; font-size: 0.68rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--butterfly); margin-bottom: 0.9rem;
+}
+.portal-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 300; line-height: 1.25;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.portal-heading em { font-style: italic; color: var(--butterfly); }
+.portal-body {
+  font-family: 'Jost', sans-serif; font-weight: 300;
+  font-size: 0.95rem; line-height: 1.75;
+  color: rgba(250,244,239,0.78);
+  margin-bottom: 1.8rem;
+}
+.portal-tracks {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  margin-bottom: 1.6rem; text-align: left;
+}
+.portal-track-row {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(212,168,83,0.22);
+  border-radius: 2px;
+  background: rgba(212,168,83,0.04);
+  transition: background 0.25s, border-color 0.25s;
+}
+.portal-track-row:hover { background: rgba(212,168,83,0.1); border-color: rgba(212,168,83,0.5); }
+.portal-track-row.selected { background: rgba(212,168,83,0.15); border-color: var(--butterfly); }
+.portal-track-icon {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(212,168,83,0.14); color: var(--butterfly);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+}
+.portal-track-info { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+.portal-track-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.02rem; color: var(--cream); }
+.portal-track-artist { font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.05em; color: rgba(250,244,239,0.55); }
+.portal-actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+.portal-btn-enter {
+  background: var(--butterfly); color: var(--void);
+  border: none; padding: 0.9rem 1.8rem;
+  font-family: 'Jost', sans-serif; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+  transition: background 0.3s;
+}
+.portal-btn-enter:hover { background: #b8902f; }
+.portal-btn-silent {
+  background: transparent; color: rgba(250,244,239,0.6);
+  border: 1px solid rgba(250,244,239,0.25);
+  padding: 0.9rem 1.6rem;
+  font-family: 'Jost', sans-serif; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+  transition: border-color 0.3s, color 0.3s;
+}
+.portal-btn-silent:hover { border-color: var(--butterfly); color: var(--butterfly); }
+@media (max-width: 480px) {
+  .music-label { display: none; }
+}
+
 /* ===== A11Y MODE ===== */
 body.a11y {
   --cream: #ffffff; --warm: #f8f8f8; --blush: #f0f0f0;
@@ -779,6 +921,33 @@ footer {
   </svg>
 </button>
 
+<!-- Background Music -->
+<audio id="bgAudio" preload="auto"></audio>
+<button class="music-btn invite" id="musicToggle" aria-label="Toggle background music" title="Frequency & Sound">
+  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect class="note-bar" x="2.5" y="7" width="2.4" height="8" rx="1" fill="#d4a853"/>
+    <rect class="note-bar" x="7.8" y="3" width="2.4" height="12" rx="1" fill="#d4a853"/>
+    <rect class="note-bar" x="13.1" y="9" width="2.4" height="6" rx="1" fill="#d4a853"/>
+  </svg>
+</button>
+<div class="music-label" id="musicLabel"></div>
+
+<!-- Portal Welcome Lightbox -->
+<div class="portal-overlay" id="portalOverlay" role="dialog" aria-modal="true" aria-label="Welcome">
+  <div class="portal-panel">
+    <button class="portal-close" id="portalClose" aria-label="Close">&#x2715;</button>
+    <img src="nd.png" alt="Magen Kutra" class="portal-photo">
+    <p class="portal-eyebrow">A Personal Invitation</p>
+    <h2 class="portal-heading">Let the <em>frequency</em> find you.</h2>
+    <p class="portal-body">Before we begin, know that every session I hold starts with reading what your body is already resonating at, then meeting it with the exact frequency it needs to soften and restore. This page works the same way. I have chosen these two pieces from my own healing playlist, each one tuned for release, and set them to play low beneath you as you scroll. You do not have to do anything. Simply let it hum in the background, and notice what begins to settle.</p>
+    <div class="portal-tracks" id="portalTracks"></div>
+    <div class="portal-actions">
+      <button class="portal-btn-enter" id="portalEnter">Begin With Sound</button>
+      <button class="portal-btn-silent" id="portalSilent">Continue in Silence</button>
+    </div>
+  </div>
+</div>
+
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true" role="dialog" aria-label="Navigation menu">
   <button class="mobile-close" id="mobileClose" aria-label="Close navigation">&#x2715;</button>
@@ -1336,6 +1505,151 @@ document.getElementById('contactForm').addEventListener('submit', async function
   }
   checkGate();
   window.addEventListener('resize', checkGate);
+})();
+</script>
+
+<!-- Background Music + Portal Welcome -->
+<script>
+(function () {
+  var TRACKS = [
+    { src: 'https://www.rosadiosa.com/audio/dreams-rewound.mp3', title: 'Dreams Rewound', artist: 'Ethan Echo & Jody Livin' },
+    { src: 'https://www.rosadiosa.com/audio/times-embrace.mp3', title: "Time's Embrace", artist: 'Ethan Echo & Jody Livin' }
+  ];
+  var audio = document.getElementById('bgAudio');
+  var btn = document.getElementById('musicToggle');
+  var label = document.getElementById('musicLabel');
+  var overlay = document.getElementById('portalOverlay');
+  var tracksWrap = document.getElementById('portalTracks');
+  var trackIndex = 0;
+  var labelTimer = null;
+
+  function loadTrack(i, resumeTime) {
+    trackIndex = i;
+    audio.src = TRACKS[i].src;
+    audio.load();
+    if (resumeTime) {
+      audio.addEventListener('loadedmetadata', function once() {
+        audio.currentTime = resumeTime;
+        audio.removeEventListener('loadedmetadata', once);
+      });
+    }
+    updateLabel();
+    markSelected();
+  }
+
+  function updateLabel() {
+    label.textContent = TRACKS[trackIndex].title + ' — ' + TRACKS[trackIndex].artist;
+  }
+
+  function showLabel() {
+    label.classList.add('show');
+    clearTimeout(labelTimer);
+    labelTimer = setTimeout(function () { label.classList.remove('show'); }, 3000);
+  }
+
+  function markSelected() {
+    var rows = tracksWrap.querySelectorAll('.portal-track-row');
+    rows.forEach(function (row, i) {
+      row.classList.toggle('selected', i === trackIndex);
+    });
+  }
+
+  function persist() {
+    try {
+      sessionStorage.setItem('mm_music', JSON.stringify({
+        trackIndex: trackIndex,
+        currentTime: audio.currentTime || 0,
+        playing: !audio.paused
+      }));
+    } catch (e) {}
+  }
+
+  function playAudio() {
+    audio.play().then(function () {
+      btn.classList.add('playing');
+      btn.classList.remove('invite');
+      showLabel();
+    }).catch(function () {});
+  }
+
+  function pauseAudio() {
+    audio.pause();
+    btn.classList.remove('playing');
+  }
+
+  TRACKS.forEach(function (t, i) {
+    var row = document.createElement('div');
+    row.className = 'portal-track-row';
+    row.innerHTML = '<span class="portal-track-icon">&#9834;</span>' +
+      '<div class="portal-track-info"><span class="portal-track-title">' + t.title + '</span>' +
+      '<span class="portal-track-artist">' + t.artist + '</span></div>';
+    row.addEventListener('click', function () {
+      loadTrack(i);
+      playAudio();
+      window.mmPlayTrack = window.mmPlayTrack;
+    });
+    tracksWrap.appendChild(row);
+  });
+
+  window.mmPlayTrack = function (i) {
+    loadTrack(i);
+    playAudio();
+  };
+
+  btn.addEventListener('click', function () {
+    if (audio.paused) { playAudio(); } else { pauseAudio(); }
+  });
+
+  audio.addEventListener('ended', function () {
+    loadTrack((trackIndex + 1) % TRACKS.length);
+    playAudio();
+  });
+
+  audio.addEventListener('play', persist);
+  audio.addEventListener('pause', persist);
+  var lastPersist = 0;
+  audio.addEventListener('timeupdate', function () {
+    var now = Date.now();
+    if (now - lastPersist > 4000) { lastPersist = now; persist(); }
+  });
+  window.addEventListener('pagehide', persist);
+
+  var closePortal = function () {
+    overlay.classList.remove('active');
+    document.documentElement.style.overflow = '';
+    try { sessionStorage.setItem('mm_portal_seen', '1'); } catch (e) {}
+  };
+  document.getElementById('portalClose').addEventListener('click', closePortal);
+  document.getElementById('portalEnter').addEventListener('click', function () {
+    closePortal();
+    playAudio();
+  });
+  document.getElementById('portalSilent').addEventListener('click', closePortal);
+
+  var resumed = false;
+  try {
+    var saved = JSON.parse(sessionStorage.getItem('mm_music') || 'null');
+    if (saved) {
+      loadTrack(saved.trackIndex || 0, saved.currentTime || 0);
+      if (saved.playing) {
+        resumed = true;
+        document.addEventListener('click', function onceClick() {
+          document.removeEventListener('click', onceClick);
+          playAudio();
+        }, { once: true });
+      }
+    } else {
+      loadTrack(0);
+    }
+  } catch (e) { loadTrack(0); }
+
+  var seen = false;
+  try { seen = sessionStorage.getItem('mm_portal_seen') === '1'; } catch (e) {}
+  if (!seen && !resumed && window.innerWidth >= 900) {
+    setTimeout(function () {
+      overlay.classList.add('active');
+    }, 900);
+  }
 })();
 </script>
 </body>
