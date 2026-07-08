@@ -685,10 +685,58 @@ footer {
 @media (max-width: 375px) {
   #hero h1 { font-size: 2.9rem; }
 }
+
+/* ===== MOBILE GATE ===== */
+.mobile-gate {
+  display: none;
+  position: fixed; inset: 0; z-index: 9999;
+  backdrop-filter: blur(46px) saturate(115%);
+  -webkit-backdrop-filter: blur(46px) saturate(115%);
+  background: rgba(30,16,24,0.72);
+  flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: clamp(2rem,10vw,4rem);
+}
+.mobile-gate.active { display: flex; }
+.mobile-gate-logo {
+  width: clamp(64px,16vw,90px); height: auto;
+  margin-bottom: clamp(1.97rem,6vw,2.6rem); opacity: 0.92;
+}
+.mobile-gate-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--butterfly); margin-bottom: 1.2rem;
+}
+.mobile-gate-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem,5vw,2.2rem); font-weight: 300; line-height: 1.25;
+  color: var(--cream); margin-bottom: 1.1rem;
+}
+.mobile-gate-heading em { font-style: italic; color: var(--butterfly); }
+.mobile-gate-sub {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 0.88rem; line-height: 1.7;
+  color: rgba(250,244,239,0.75); margin-bottom: 1.4rem;
+  max-width: 28ch;
+}
+.mobile-gate-note {
+  font-family: 'DM Sans', sans-serif; font-style: italic;
+  font-size: 0.75rem; line-height: 1.65;
+  color: rgba(212,168,83,0.6); max-width: 32ch;
+}
 </style>
 </head>
 
 <body>
+<!-- Mobile Gate -->
+<div class="mobile-gate" id="mobileGate" aria-hidden="true">
+  <img src="magensmagic-logo.png" alt="" class="mobile-gate-logo">
+  <p class="mobile-gate-eyebrow">Magen's Magic</p>
+  <h2 class="mobile-gate-heading">This experience was crafted for a <em>larger stage.</em></h2>
+  <p class="mobile-gate-sub">Please revisit this page on a desktop or laptop to enter.</p>
+  <p class="mobile-gate-note">A living mobile experience is woven for every client who joins us. This preview is simply held for the larger stage, for now.</p>
+</div>
+
 <!-- Skip link -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -1234,6 +1282,20 @@ document.getElementById('contactForm').addEventListener('submit', async function
     btn.disabled = false;
   }
 });
+</script>
+
+<script>
+(function () {
+  function checkGate() {
+    var gate = document.getElementById('mobileGate');
+    if (!gate) return;
+    var gated = window.innerWidth < 900;
+    gate.classList.toggle('active', gated);
+    document.documentElement.style.overflow = gated ? 'hidden' : '';
+  }
+  checkGate();
+  window.addEventListener('resize', checkGate);
+})();
 </script>
 </body>
 </html>
